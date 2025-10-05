@@ -1,0 +1,173 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjs2o5ayqvvia"]
+
+[ext_resource type="Script" uid="uid://cfyx0elcjfa8m" path="res://game.gd" id="1_s088b"]
+[ext_resource type="PackedScene" uid="uid://bho1o1biiif52" path="res://SCENES/Board.tscn" id="1_yyj35"]
+[ext_resource type="AudioStream" uid="uid://bvfvb811xl4qs" path="res://ASSETS/Collect.mp3" id="3_rlklq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s088b"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlklq"]
+bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.937255, 0.937255, 0.00784314, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_s088b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="VBoxContainer/HBoxContainer"]
+width = 20.0
+
+[node name="Line2D3" type="Line2D" parent="VBoxContainer/HBoxContainer"]
+width = 20.0
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer"]
+width = 20.0
+
+[node name="Board" parent="." instance=ExtResource("1_yyj35")]
+position = Vector2(584, 320)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Clock" type="Label" parent="CanvasLayer"]
+offset_left = 552.0
+offset_top = 8.0
+offset_right = 674.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Time: 3:00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 920.0
+offset_top = 10.0
+offset_right = 1124.0
+offset_bottom = 65.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.937255, 0.00784314, 1)
+theme_override_font_sizes/font_size = 25
+text = "SCORE:"
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.937255, 0.00784314, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Collect" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 544.0
+offset_top = 600.0
+offset_right = 659.0
+offset_bottom = 643.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_s088b")
+text = "COLLECT"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="GameOverPanel" type="Panel" parent="."]
+visible = false
+offset_left = 496.0
+offset_top = 168.0
+offset_right = 744.0
+offset_bottom = 336.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlklq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 0
+offset_right = 248.0
+offset_bottom = 168.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.929412, 0.00784314, 1)
+theme_override_font_sizes/font_size = 20
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929412, 0.929412, 0.00784314, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayAgainButton" type="Button" parent="GameOverPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="GameOverPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rlklq")
+volume_db = -5.157
+autoplay = true
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 608.0
+offset_right = 1135.0
+offset_bottom = 639.0
+text = "QUIT"
+
+[connection signal="pressed" from="Collect" to="." method="_on_collect_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBoxContainer/HBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
