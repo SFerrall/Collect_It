@@ -115,8 +115,32 @@ func upgrade():
 	for i in current_run:
 		BOARD.Board[i].value = randi() % 10 + 1
 		BOARD.Board[i].level += 1
+		match BOARD.Board[i].level:
+			2:
+				$Panel/VBoxContainer/Label3.show()
+			3:
+				$Panel/VBoxContainer/Label4.show()
+			4:
+				$Panel/VBoxContainer/Label5.show()
+			5:
+				$Panel/VBoxContainer/Label6.show()
+			6:
+				$Panel/VBoxContainer/Label7.show()
+			7:
+				$Panel/VBoxContainer/Label8.show()
+			8:
+				$Panel/VBoxContainer/Label9.show()
+			9:
+				$Panel/VBoxContainer/Label10.show()
+			10:
+				$Panel/VBoxContainer/Label11.show()
 		BOARD.Board[i].get_node('Label').text = ''
-		BOARD.Board[i].get_theme_stylebox("normal").border_color = BOARD.Board[i].Colors[BOARD.Board[i].level]
+		if BOARD.Board[i].level > 10:
+			BOARD.Board[i].disabled = true
+			BOARD.Board[i].visible = false
+			
+		else:
+			BOARD.Board[i].get_theme_stylebox("normal").border_color = BOARD.Board[i].Colors[BOARD.Board[i].level]
 	current_run.clear()
 	state = STATE.NONE
 
@@ -131,3 +155,4 @@ func _on_quit_button_pressed():
 
 func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://SCENES/menu.tscn")
+	

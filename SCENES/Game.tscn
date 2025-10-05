@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjs2o5ayqvvia"]
+[gd_scene load_steps=7 format=3 uid="uid://bjs2o5ayqvvia"]
 
 [ext_resource type="Script" uid="uid://cfyx0elcjfa8m" path="res://game.gd" id="1_s088b"]
 [ext_resource type="PackedScene" uid="uid://bho1o1biiif52" path="res://SCENES/Board.tscn" id="1_yyj35"]
@@ -23,6 +23,14 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.937255, 0.937255, 0.00784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2bif"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.882353, 0.882353, 0.882353, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_s088b")
@@ -166,6 +174,115 @@ offset_top = 608.0
 offset_right = 1135.0
 offset_bottom = 639.0
 text = "QUIT"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 896.0
+offset_top = 112.0
+offset_right = 1064.0
+offset_bottom = 416.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2bif")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 296.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "LEVELS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+text = "LVL 1 - x1 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "LVL 2 - x2 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0, 1)
+text = "LVL 3 - x3 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "LVL 4 - x4 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+text = "LVL 5 - x5 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label7" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0, 0.75, 1)
+text = "LVL 6 - x6 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label8" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "LVL 7 - x7 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label9" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.75, 1)
+text = "LVL 8 - x8 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label10" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.5, 0, 1)
+text = "LVL 9 - x9 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label11" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0, 1, 1)
+text = "LVL 10 - x10 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="pressed" from="Collect" to="." method="_on_collect_pressed"]
 [connection signal="pressed" from="GameOverPanel/VBoxContainer/HBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
